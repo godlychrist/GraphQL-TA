@@ -3,12 +3,11 @@ const Vehicle = require("../models/vehicles");
 const resolvers = {
     Query: {
 
-        // _ es el parent (no se usa en queries raíz)
-        // args es lo que mandó el cliente: { filters, page, limit }
+
         getVehicles: async (_, { filters, page: rawPage, limit = 10 }) => {
             const query = {};
             const f = filters || {}; // por si viene null
-            
+
             // Forzamos que page sea al menos 1
             const page = rawPage && rawPage > 0 ? rawPage : 1;
 
